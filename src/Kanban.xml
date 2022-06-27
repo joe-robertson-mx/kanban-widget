@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget id="mendix.kanban.Kanban" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
+        supportedPlatform="Web"
+        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    <name>Kanban</name>
+    <description>A Kanban board in Mendix</description>
+    <icon/>
+    <properties>
+        <propertyGroup caption="Sections">
+            <property key="myObject" type="object" isList="true">
+                <caption>Sections</caption>
+                <description/>
+                <properties>
+                    <propertyGroup caption="Object list group">
+                        <property key="sectionName" type="string" required="true">
+                            <caption>Name</caption>
+                            <description>Name</description>
+                        </property>
+                        <property key="sectionAsssociation" type="association" selectableObjects="selectableItems">
+                            <caption>Association</caption>
+                            <description>Association</description>
+                            <associationTypes>
+                                <associationType name="ReferenceSet"/>
+                            </associationTypes>
+                        </property>
+                        <property key="sectionItems" type="datasource" isList="true" required="true">
+                            <caption>Section Items</caption>
+                            <description>List of items</description>
+                        </property>
+                        <property key="selectableItems" type="datasource" isList="true" required="true">
+                            <caption>Selectable Items</caption>
+                            <description>List of items</description>
+                        </property>
+                        <property key="widgetList" type="widgets" required="true" dataSource="sectionItems">
+                            <caption>Content</caption>
+                            <description>Widgets using data source</description>
+                        </property>
+                    </propertyGroup>
+                </properties>
+            </property>
+        </propertyGroup>
+        <propertyGroup caption="General">
+            <property key="todo" type="association" selectableObjects="doneitems">
+                <caption>To do</caption>
+                <description>To do</description>
+                <associationTypes>
+                    <associationType name="ReferenceSet"/>
+                </associationTypes>
+            </property>
+            <property key="done" type="association" selectableObjects="todoitems">
+                <caption>Done</caption>
+                <description>Done</description>
+                <associationTypes>
+                    <associationType name="ReferenceSet"/>
+                </associationTypes>
+            </property>
+            <property key="allItems" type="datasource" isList="true" required="true">
+                <caption>All Items</caption>
+                <description>List of items</description>
+            </property>
+            <property key="todoitems" type="datasource" isList="true" required="true">
+                <caption>To Do Items</caption>
+                <description>List of items</description>
+            </property>
+            <property key="doneitems" type="datasource" isList="true" required="true">
+                <caption>Done Items</caption>
+                <description>List of items</description>
+            </property>
+            <property key="todoWidgetList" type="widgets" required="true" dataSource="todoitems">
+	            <caption>Content</caption>
+	            <description>Widgets using data source</description>
+            </property>
+            <property key="doneWidgetList" type="widgets" required="true" dataSource="doneitems">
+	            <caption>Content</caption>
+	            <description>Widgets using data source</description>
+            </property>
+        </propertyGroup>
+    </properties>
+</widget>
