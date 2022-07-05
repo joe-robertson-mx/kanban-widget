@@ -1,6 +1,13 @@
 /*
 Place your custom CSS here
 */
-.widget-hello-world {
+.kanban-col {
+    margin: 15px;
+    padding: 10px;
+    background: #9bedff;
+    border-radius: 5%;
+}
 
+.kanban-col h6 {
+    text-align: center;
 }

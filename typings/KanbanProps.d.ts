@@ -4,22 +4,23 @@
  * @author Mendix UI Content Team
  */
 import { ComponentType, CSSProperties } from "react";
-import { ListValue, ListWidgetValue, ReferenceSetValue } from "mendix";
+import { EditableValue, ListValue, ListActionValue, ListWidgetValue } from "mendix";
+import { Big } from "big.js";
 
 export interface MyObjectType {
     sectionName: string;
-    sectionAsssociation: ReferenceSetValue;
     sectionItems: ListValue;
-    selectableItems: ListValue;
     widgetList: ListWidgetValue;
+    action?: ListActionValue;
+    allItems: ListValue;
 }
 
 export interface MyObjectPreviewType {
     sectionName: string;
-    sectionAsssociation: string;
     sectionItems: {} | { type: string } | null;
-    selectableItems: {} | { type: string } | null;
     widgetList: { widgetCount: number; renderer: ComponentType<{ caption?: string }> };
+    action: {} | null;
+    allItems: {} | { type: string } | null;
 }
 
 export interface KanbanContainerProps {
@@ -27,14 +28,9 @@ export interface KanbanContainerProps {
     class: string;
     style?: CSSProperties;
     tabIndex?: number;
+    newSort: EditableValue<Big>;
+    prevSort: EditableValue<Big>;
     myObject: MyObjectType[];
-    todo: ReferenceSetValue;
-    done: ReferenceSetValue;
-    allItems: ListValue;
-    todoitems: ListValue;
-    doneitems: ListValue;
-    todoWidgetList: ListWidgetValue;
-    doneWidgetList: ListWidgetValue;
 }
 
 export interface KanbanPreviewProps {
@@ -42,12 +38,7 @@ export interface KanbanPreviewProps {
     style: string;
     styleObject?: CSSProperties;
     readOnly: boolean;
+    newSort: string;
+    prevSort: string;
     myObject: MyObjectPreviewType[];
-    todo: string;
-    done: string;
-    allItems: {} | { type: string } | null;
-    todoitems: {} | { type: string } | null;
-    doneitems: {} | { type: string } | null;
-    todoWidgetList: { widgetCount: number; renderer: ComponentType<{ caption?: string }> };
-    doneWidgetList: { widgetCount: number; renderer: ComponentType<{ caption?: string }> };
 }
